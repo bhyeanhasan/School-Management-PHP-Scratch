@@ -1,20 +1,14 @@
 <?php
 session_start();
 
-
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 
-
-
-include "Database/Connection.php";
+include "../Database/Connection.php";
 $connection = new Connection();
 $conn = $connection->Connect();
 
-
-
-
-$sql = "SELECT * FROM applicant";
+$sql = "SELECT * FROM teacher";
 //$result = $conn->query($sql);
 $result = mysqli_query($conn, $sql);
 if (!$result) {
@@ -24,15 +18,16 @@ if (!$result) {
 
 while ($row = mysqli_fetch_array($result))
 {
-    if($user == $row['name'] && $pass ==$row['roll'] )
+
+    if($user == $row['id'] && $pass ==$row['password'] )
     {
         $_SESSION['user'] = $row['name'];
+        $_SESSION['id'] = $row['id'];
+
     }
 
-  //$_SESSION['user'] = "B H Yean Hasan";
 }
 
+$conn->close();
 
-
-
-header("Location: index.php");
+header("Location: ../index.php");

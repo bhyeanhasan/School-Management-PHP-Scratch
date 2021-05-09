@@ -1,9 +1,7 @@
 <?php
-include "Database/Connection.php";
+include "../Database/Connection.php";
 $connection = new Connection();
 $conn = $connection->Connect();
-
-
 
 
 $sql = "SELECT * FROM applicant";
@@ -42,3 +40,5 @@ while ($row = mysqli_fetch_array($result))
     echo "<td>" . $row['phone'] . "</td>";
     echo "</tr><br><br>";
 }
+
+$conn->close();

@@ -1,6 +1,6 @@
 <?php
 
-include 'Database/Connection.php';
+include '../Database/Connection.php';
 
 $connection = new Connection();
 

@@ -16,21 +16,25 @@ else
 }
 ?>
 
-<form action="logout.php">
+<form action="Auth/logout.php">
     <input type="submit" name="logout" value="Logout" >
 </form>
 
-<form action="login.php" method="post">
-    <input type="text" name="user" placeholder="User">
-    <input type="password" name="pass" placeholder="Password">
+<br>
+<a href="view/profile.php">Profile</a><br>
+<br>
+
+<form action="Auth/login.php" method="post">
+    <input type="text" name="user" value="08401">
+    <input type="password" name="pass" placeholder="1234">
     <input type="submit" name="login" value="Login">
 </form>
 
-<form action="view.php">
+<form action="view/TeacherStudent.php">
     <input type="submit" name="view" value="View">
 </form>
 
-<form action="insertApplicant.php" method="post">
+<form action="InsertOperation/insertApplicant.php" method="post">
   <label> Name:</label><br>
   <input type="text" name="name" value="Noyon"><br>
     
@@ -48,7 +52,7 @@ else
 </form>
 
 
-<form action="insertTeacher.php" method="post">
+<form action="InsertOperation/insertTeacher.php" method="post">
     <label> ID :</label><br>
     <input type="text" name="id" value="08401"><br>
 
