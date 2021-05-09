@@ -1,74 +1,52 @@
 <?php
-
 include 'Database/Connection.php';
-
-
+include 'Template/htmlHeader.php';
 session_start();
-
-if(isset($_SESSION['user']))
-{
-    echo "<h2>Welcome ".$_SESSION["user"]."</h2>";
-}
-else
-{
-    //$_SESSION['user']="bhyean";
-    echo "<h2>You are not logged in</h2>";
-}
 ?>
 
-<form action="Auth/logout.php">
-    <input type="submit" name="logout" value="Logout" >
-</form>
 
-<br>
-<a href="view/profile.php">Profile</a><br>
-<br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <?php
+        if(isset($_SESSION['user']))
+            echo $_SESSION['user'];
+        else
+            echo "Not logged in"
+        ?>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
 
-<form action="Auth/login.php" method="post">
-    <input type="text" name="user" value="08401">
-    <input type="password" name="pass" placeholder="1234">
-    <input type="submit" name="login" value="Login">
-</form>
-
-<form action="view/TeacherStudent.php">
-    <input type="submit" name="view" value="View">
-</form>
-
-<form action="InsertOperation/insertApplicant.php" method="post">
-  <label> Name:</label><br>
-  <input type="text" name="name" value="Noyon"><br>
-    
-  <label>HSC Roll</label><br>
-  <input type="text" name="roll" value="1802027"><br>
-
-    <label>Faculty</label><br>
-    <input type="text" name="faculty" value="CSE"><br>
-
-    <label>Tranjection ID:</label><br>
-    <input type="text" name="payment" value="5000"><br><br>
-
-    <input type="submit">
-    
-</form>
+            <?php if(! isset($_SESSION['id'])): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="Template/loginPage.php">Login <span class="sr-only">(current)</span></a>
+                </li>
+            <?php else: ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="view/TeacherStudent.php">Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="view/profile.php">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Auth/logout.php">Logout</a>
+                </li>
+            <?php endif; ?>
 
 
-<form action="InsertOperation/insertTeacher.php" method="post">
-    <label> ID :</label><br>
-    <input type="text" name="id" value="08401"><br>
 
-    <label> Name :</label><br>
-    <input type="text" name="name" value="Ruhul Amin"><br>
-
-    <label>Subject :</label><br>
-    <input type="text" name="subject" value="Math"><br>
-
-    <label>Phone :</label><br>
-    <input type="text" name="phone" value="01920599266"><br><br>
-
-    <input type="submit">
-
-</form>
+        </ul>
+    </div>
+</nav>
 
 
+
+
+<?php
+include "Template/htmlFooter.php";
+?>
 
 

@@ -1,12 +1,11 @@
 <?php
 
 include '../Database/Connection.php';
+include '../Auth/middleware.php';
 
+middleware::checkMiddleware();
 $connection = new Connection();
-
 $conn = $connection->Connect();
-
-
 
 
 $sql = "INSERT INTO applicant (roll, name, faculty,payment) VALUES ('". $_POST['roll']."','". $_POST['name']."','".$_POST['faculty']."','".$_POST['payment']."')";
